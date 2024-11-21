@@ -1,9 +1,12 @@
 # test_my_c_code.py
 import pytest
-from wrapper import my_c_add, rust_lib, rust_ffi_lib
+from wrapper import my_c_add, my_c_ffi_add, rust_lib, rust_ffi_lib
 
 def test_my_c_add(benchmark):
     assert benchmark(my_c_add, 10, 20) == 30
+
+def test_c_ffi_add(benchmark):
+    assert benchmark(my_c_ffi_add, 10, 20) == 30
 
 def test_my_rust_add(benchmark):
     assert benchmark(rust_lib.add, 3, 5) == 8
